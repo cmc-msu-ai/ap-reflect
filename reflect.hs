@@ -67,13 +67,13 @@ ap' = Fn "<*>" $ \f -> Fn (show f ++ " <*>") $ \x -> fromFn <$> f <*> x
 
 -- -- внутреннее представление операции <$>
 infix 6 -$-
-(-$-) :: (Show (f a), Functor f) => Ap (a ~> b) -> Ap (f a) -> Ap (f b)
-f -$- x = Val fmap' :$ f :$ x
+(-$-) :: (Show (f a), Functor f) => (a ~> b) -> f a -> Ap (f b)
+f -$- x = Val fmap' :$ Val f :$ Val x
 
 -- -- внутреннее представление операции <*>
 infixl 5 -*-
-(-*-) :: (Show (f (a ~> b)), Show (f a), Applicative f) => Ap (f (a ~> b)) -> Ap (f a) -> Ap (f b)
-f -*- x = Val ap' :$ f :$ x
+(-*-) :: (Show (f (a ~> b)), Show (f a), Applicative f) => Ap (f (a ~> b)) -> f a -> Ap (f b)
+f -*- x = Val ap' :$ f :$ Val x
 
 -- один шаг сокращения (вычисления) выражения
 reduce :: Ap a -> Ap a

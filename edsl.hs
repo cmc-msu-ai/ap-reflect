@@ -1,6 +1,6 @@
 {-# LANGUAGE TypeOperators #-}
 
-import Debug.SimpleReflect hiding (reduce)
+import Debug.SimpleReflect
 import Reflect
 
 
@@ -11,14 +11,14 @@ import Reflect
 main :: IO ()
 main = do
 
-  mapM_ print . reductions $ Val (.+) -$- Val (Just 1)
+  mapM_ print . reductions $ (.+) -$- Just 1
   putStrLn "------------------------------------------"
 
-  mapM_ print . reductions $ Val (.+) -$- Val [1, 2, 3]
+  mapM_ print . reductions $ (.+) -$- [1, 2, 3]
   putStrLn "------------------------------------------"
 
-  mapM_ print . reductions $ Val (.+) -$- Val (Just 1) -*- Val (Just 3)
+  mapM_ print . reductions $ (.+) -$- Just 1 -*- Just 3
   putStrLn "------------------------------------------"
 
-  mapM_ print . reductions $ Val (.+) -$- Val [a, b] -*- Val [x, y]
+  mapM_ print . reductions $ (.+) -$- [a, b] -*- [x, y]
   putStrLn "------------------------------------------"
