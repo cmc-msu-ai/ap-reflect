@@ -8,7 +8,8 @@
 module Debug.Reflect where
 
 import Control.Applicative (Applicative(..), (<$>))
-import Data.List (findIndex)
+import Data.List (findIndex, isInfixOf, isPrefixOf)
+import Data.Char (isAlpha)
 
 
 -- тип данных ~> - внутреннее представление функции (a -> b)
@@ -75,16 +76,31 @@ infixl 5 -*-
 (-*-) :: (Show (f (a ~> b)), Show (f a), Applicative f) => Ap (f (a ~> b)) -> f a -> Ap (f b)
 f -*- x = Val ap' :$ f :$ Val x
 
+-- внутреннее представление операции pure
+pure'' :: (Show a, Applicative f) => a -> Ap (f a)
+pure'' x = Val pure' :$ Val x
+
+-- внутреннее представление операции fmap
+fmap'' :: (Show (f a), Functor f) => (a ~> b) -> f a -> Ap (f b)
+fmap'' f x = Val (makeFn2 "fmap" (fmap . fromFn)) :$ Val f :$ Val x
+
+-- сокращение выражения
+reduce'' :: Ap a -> Ap a
+reduce'' (Val (Fn _ f) :$ Val x) = Val (f x)
+reduce'' (Val f :$ x) = Val f :$ reduce'' x
+reduce'' (f :$ x) = reduce'' f :$ x
+reduce'' v = v
+
 -- один шаг сокращения (вычисления) выражения
-reduce :: Ap a -> Ap a
-reduce (Val (Fn _ f) :$ Val x) = Val (f x)
-reduce (Val f :$ x) = Val f :$ reduce x
-reduce (f :$ x) = reduce f :$ x
-reduce v = v
+reduce' :: Show a => Ap a -> Ap a
+reduce' x
+    | isVal x = x
+    | otherwise = head $ filter (\x' -> show x' /= show x) xs
+    where xs = iterate reduce'' x
 
 -- все шаги сокращения (вычисления) выражения
-reductions :: Ap a -> [Ap a]
+reductions :: Show a => Ap a -> [Ap a]
 reductions x = take (n + 1) xs
   where
     Just n = findIndex isVal xs
-    xs = iterate (reduce . reduce) x
+    xs = iterate reduce' x
