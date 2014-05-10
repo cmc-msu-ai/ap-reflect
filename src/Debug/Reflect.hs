@@ -5,7 +5,7 @@
 -- позволяет писать deriving (Functor), что автоматически выводит instance Functor
 {-# LANGUAGE DeriveFunctor #-}
 
-module Reflect where
+module Debug.Reflect where
 
 import Control.Applicative (Applicative(..), (<$>))
 import Data.List (findIndex)
