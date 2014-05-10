@@ -6,6 +6,8 @@ synopsis:            Partial evaluation reflection a la simple-reflect.
 -- license-file:        LICENSE
 author:              Oleg Baev
 maintainer:          odbaev@yandex.ru
+homepage:            https://github.com/cmc-msu-ai/ap-reflect
+bug-reports:         https://github.com/cmc-msu-ai/ap-reflect/issues
 -- copyright:           
 -- category:            
 build-type:          Simple
@@ -18,3 +20,7 @@ library
   exposed-modules:     Debug.Reflect
   -- other-modules:       
   build-depends:       base ==4.6.*
+
+Source-Repository head
+  Type:                 git
+  Location:             https://github.com/cmc-msu-ai/ap-reflect.git
