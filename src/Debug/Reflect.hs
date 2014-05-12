@@ -8,8 +8,7 @@
 module Debug.Reflect where
 
 import Control.Applicative (Applicative(..), (<$>))
-import Data.List (findIndex, isInfixOf, isPrefixOf)
-import Data.Char (isAlpha)
+import Data.List (findIndex)
 
 
 -- тип данных ~> - внутреннее представление функции (a -> b)
@@ -75,14 +74,6 @@ f -$- x = Val fmap' :$ Val f :$ Val x
 infixl 5 -*-
 (-*-) :: (Show (f (a ~> b)), Show (f a), Applicative f) => Ap (f (a ~> b)) -> f a -> Ap (f b)
 f -*- x = Val ap' :$ f :$ Val x
-
--- внутреннее представление операции pure
-pure'' :: (Show a, Applicative f) => a -> Ap (f a)
-pure'' x = Val pure' :$ Val x
-
--- внутреннее представление операции fmap
-fmap'' :: (Show (f a), Functor f) => (a ~> b) -> f a -> Ap (f b)
-fmap'' f x = Val (makeFn2 "fmap" (fmap . fromFn)) :$ Val f :$ Val x
 
 -- сокращение выражения
 reduce'' :: Ap a -> Ap a
