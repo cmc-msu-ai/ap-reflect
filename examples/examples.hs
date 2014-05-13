@@ -4,7 +4,7 @@ import Control.Applicative
 import Control.Monad.Identity
 
 import Debug.SimpleReflect
-import Reflect
+import Debug.Reflect
 
 -- внутреннее представление операций
 
