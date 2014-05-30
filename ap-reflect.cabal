@@ -2,8 +2,8 @@ name:                ap-reflect
 version:             0.1.0.0
 synopsis:            Partial evaluation reflection a la simple-reflect.
 -- description:         
--- license:             
--- license-file:        LICENSE
+license:             BSD3
+license-file:        LICENSE
 author:              Oleg Baev
 maintainer:          odbaev@yandex.ru
 homepage:            https://github.com/cmc-msu-ai/ap-reflect
