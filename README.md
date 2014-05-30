@@ -18,6 +18,11 @@ Install it, by typing:
 
     cabal install simple-reflect
 
+## Documentation
+
+Haddock documentation is available at  
+http://odbaev.github.io/ap-reflect/doc/html/ap-reflect/
+
 ## Usage
 
 For example:
