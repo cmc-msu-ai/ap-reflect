@@ -6,12 +6,18 @@ Partial evaluation reflection a la simple-reflect.
 
 ## Installation
 
+You can install the `ap-reflect` from Hackage:
+
+    $ cabal install ap-reflect
+
+or directly from the repository:
+
     $ git clone https://github.com/cmc-msu-ai/ap-reflect
     $ cd ap-reflect
     $ cabal install
 
-For some possibilities of using this library 
-you may need to install `simple-reflect`.  
+For some possibilities of using this library
+you may need to install `simple-reflect`.
 It is available from
 [Hackage](http://hackage.haskell.org/package/simple-reflect).
 Install it, by typing:
@@ -20,7 +26,7 @@ Install it, by typing:
 
 ## Documentation
 
-Haddock documentation is available at  
+Haddock documentation is available at
 http://cmc-msu-ai.github.io/ap-reflect/doc/html/ap-reflect/
 
 ## Usage
@@ -38,7 +44,7 @@ Result:
     Just (a +) <*> Just b
     Just (a + b)
 
-You can find another examples of using this library at  
+You can find another examples of using this library at
 https://github.com/cmc-msu-ai/ap-reflect/tree/master/examples
 
 ## Contributors
