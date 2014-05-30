@@ -41,7 +41,10 @@ Result:
 You can find another examples of using this library at  
 https://github.com/cmc-msu-ai/ap-reflect/tree/master/examples
 
+## Contributors
+
+* Nickolay Kudasov
+
 ## Contribution
 
-* Oleg Baev  
-email: odbaev@yandex.ru
+Contact me (Oleg Baev): odbaev@yandex.ru
