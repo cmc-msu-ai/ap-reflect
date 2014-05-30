@@ -27,8 +27,7 @@ parens s = "(" ++ s ++ ")"
 
 -- | checks whether function is infix
 isInfixFn :: String -> Bool
-isInfixFn (x:_) = not $ isAlpha x
-isInfixFn [] = False
+isInfixFn = not . any isAlpha
 
 -- | shows function with its argument
 showFn :: String -> String -> String
