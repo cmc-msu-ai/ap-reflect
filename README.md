@@ -21,7 +21,7 @@ Install it, by typing:
 ## Documentation
 
 Haddock documentation is available at  
-http://odbaev.github.io/ap-reflect/doc/html/ap-reflect/
+http://cmc-msu-ai.github.io/ap-reflect/doc/html/ap-reflect/
 
 ## Usage
 
