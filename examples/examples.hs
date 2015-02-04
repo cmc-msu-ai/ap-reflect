@@ -41,9 +41,6 @@ traverse _ [] = pure'' []
 traverse f (x:xs) = Val ap' :$ (Val fmap' :$ Val (.:) :$ fx) :$ traverse f xs
   where fx = Val (Fn "f" f) :$ Val x
 
-instance Show a => Show (ZipList a) where
-  show (ZipList x) = "ZipList " ++ show x
-
 instance Show m => Show (Const m a) where
   show (Const x) = "Const " ++ addParens (show x)
     where addParens s = if ' ' `elem` s then parens s else s
@@ -138,4 +135,4 @@ main = do
   line
   mapM_ print . reductions $ (.+) -$- Left a -*- Right b
   line
-  
+
