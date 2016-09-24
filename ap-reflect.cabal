@@ -1,5 +1,5 @@
 name:                ap-reflect
-version:             0.2
+version:             0.3
 synopsis:            Partial evaluation reflection a la simple-reflect.
 description:         The library provides a simple reflection technique,
                      substituting functions like @fmap@ and @\<*\>@ with reflection-aware analogues.
@@ -25,7 +25,7 @@ library
   ghc-options:         -Wall
   exposed-modules:     Debug.Reflect
   -- other-modules:       
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       base >= 4.8 && < 5
 
 Source-Repository head
   Type:                 git
